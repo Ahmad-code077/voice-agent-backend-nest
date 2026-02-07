@@ -5,6 +5,7 @@ import {
   ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 import { UserRole } from './enums';
 import { Account } from './account.db';
@@ -15,20 +16,24 @@ export class User {
   id: string;
 
   @ManyToOne(() => Account, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'account_id' }) // specify exact column name
   account: Account;
+
+  @Column({ name: 'account_id' })
+  accountId: string;
 
   @Column({ unique: true })
   email: string;
 
   @Column()
-  passwordHash: string;
+  password_hash: string;
 
   @Column({ type: 'enum', enum: UserRole })
   role: UserRole;
 
   @CreateDateColumn()
-  createdAt: Date;
+  created_at: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updated_at: Date;
 }
