@@ -1,0 +1,11 @@
+export enum UserRole {
+  ACCOUNT_OWNER = 'ACCOUNT_OWNER',
+  ACCOUNT_MANAGER = 'ACCOUNT_MANAGER',
+}
+
+export enum CallStatus {
+  INITIATED = 'INITIATED',
+  ACTIVE = 'ACTIVE',
+  COMPLETED = 'COMPLETED',
+  FAILED = 'FAILED',
+}
