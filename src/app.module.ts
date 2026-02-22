@@ -8,6 +8,8 @@ import { CallsModule } from './calls/calls.module';
 import { IntegrationsModule } from './integrations/integrations.module';
 import { HealthModule } from './health/health.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TelnyxController } from './webhooks/telnyx/telnyx.controller';
+import { TelnyxModule } from './webhooks/telnyx/telnyx.module';
 
 @Module({
   imports: [
@@ -23,13 +25,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       migrations: ['dist/database/migrations/*.js'],
       migrationsRun: false,
     }),
+    TelnyxModule,
     AuthModule,
     UsersModule,
     CallsModule,
     IntegrationsModule,
     HealthModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, TelnyxController],
   providers: [AppService],
 })
 export class AppModule {}
